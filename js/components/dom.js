@@ -68,99 +68,104 @@ const createListItemProfileMenu = (text) => {
     return listElement;
 }
 
-// const createIconReactions = (icon) => {
-//     let reactionWrapper = document.createElement("p");
-//     reactionWrapper.innerText = icon;
-//     return reactionWrapper;
-// }
+const createIconReactions = (icon) => {
+    let reactionWrapper = document.createElement("p");
+    reactionWrapper.innerText = icon;
+    return reactionWrapper;
+}
 
-// const createTagsElements = (tagsArray) => {
-//     let tagsWrapper = document.createElement("p");
-//     tagsWrapper.classList.add("card-text");
+const createTagsElements = (tagsArray) => {
+    let tagsWrapper = document.createElement("p");
+    tagsWrapper.classList.add("card-text");
 
-//     tagsArray.forEach((tag) => {
-//         let tagsElement = document.createElement("span");
-//         tagsElement.classList.add("hashtags__hover", "p-2", "rounded");
-//         tagsElement.innerText = tag;
-//         tagsWrapper.append(tagsElement);
-//     });
+    tagsArray.forEach((tag) => {
+        let tagsElement = document.createElement("span");
+        tagsElement.classList.add("hashtags__hover", "p-2", "rounded");
+        tagsElement.innerText = tag;
+        tagsWrapper.append(tagsElement);
+    });
 
-//     return tagsWrapper;
-// }
+    return tagsWrapper;
+}
 
-// const createPostCard = () => {
-//     let cardWrapper = document.createElement("div");
-//     cardWrapper.classList.add("card", "mb-3");
+const createPostCard = (postObject, index) => {
+    console.log(postObject.key);
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let {author, comments, createdDate, description, image, tittle, tags, key} = postObject;
+    let date = new Date(createdDate);
+    let formatDate = `${date.getDate()} ${monthNames[date.getMonth()]}`;
+    let cardWrapper = document.createElement("div");
+    cardWrapper.classList.add("card", "mb-3");
 
-//     let imageCard = document.createElement("img");
-//     imageCard.src = "./assets/images/final.webp";
-//     imageCard.classList.add("card-img-top");
+    let imageCard = document.createElement("img");
+    imageCard.src = image;
+    imageCard.classList.add("card-img-top");
 
-//     let cardBody = document.createElement("div");
-//     cardBody.classList.add("card-body", "mb-2");
+    let cardBody = document.createElement("div");
+    cardBody.classList.add("card-body", "mb-2");
 
-//     let profileWrapper = document.createElement("div");
-//     profileWrapper.classList.add("d-flex", "flex-row");
+    let profileWrapper = document.createElement("div");
+    profileWrapper.classList.add("d-flex", "flex-row");
 
-//     let profileImage = document.createElement("img");
-//     profileImage.classList.add("rounded-circle", "icon__image");
-//     profileImage.src = "https://xsgames.co/randomusers/avatar.php?g=male";
-//     profileImage.width ="40";
-//     profileImage.height = "40";
+    let profileImage = document.createElement("img");
+    profileImage.classList.add("rounded-circle", "icon__image");
+    profileImage.src = "https://xsgames.co/randomusers/avatar.php?g=male";
+    profileImage.width ="40";
+    profileImage.height = "40";
 
-//     let profilenameWrapper = document.createElement("div");
-//     profilenameWrapper.classList.add("text", "ms-2");
+    let profilenameWrapper = document.createElement("div");
+    profilenameWrapper.classList.add("text", "ms-2");
 
-//     let textProfileName = document.createElement("h6");
-//     textProfileName.classList.add("m-0");
-//     textProfileName.innerText = "David Krumholz";
+    let textProfileName = document.createElement("h6");
+    textProfileName.classList.add("m-0");
+    textProfileName.innerText = author;
 
-//     let spanDate = document.createElement("span");
-//     spanDate.innerText = "15 June";
+    let spanDate = document.createElement("span");
+    spanDate.innerText = formatDate;
 
-//     let titlePost = document.createElement("h5");
-//     titlePost.classList.add("card-title", "mt-2", "link__text");
-//     titlePost.innerText = "Esto es una prueba";
-//     titlePost.addEventListener("click", () => {
-//         window.open("../views/post.html", "_self")
-//     });
+    let titlePost = document.createElement("h5");
+    titlePost.classList.add("card-title", "mt-2", "link__text");
+    titlePost.innerText = description;
+    titlePost.addEventListener("click", () => {
+        window.open(`../views/post.html?postId=${key}`, "_self")
+    });
 
-//     let bottomWrapper = document.createElement("div");
-//     bottomWrapper.classList.add("d-flex", "flex-row", "justify-content-between");
+    let bottomWrapper = document.createElement("div");
+    bottomWrapper.classList.add("d-flex", "flex-row", "justify-content-between");
 
-//     let reactionsWrapper = document.createElement("div");
-//     reactionsWrapper.classList.add("d-flex", "flex-row")
+    let reactionsWrapper = document.createElement("div");
+    reactionsWrapper.classList.add("d-flex", "flex-row")
 
-//     let countReactions = document.createElement("p");
-//     countReactions.innerText = "212 reactions";
+    let countReactions = document.createElement("p");
+    countReactions.innerText = "212 reactions";
     
-//     let iconMessage = document.createElement("img");
-//     iconMessage.classList.add("m-2");
-//     iconMessage.src = "../assets/images/comment-icon.png";
-//     iconMessage.width = "15";
-//     iconMessage.height = "15";
+    let iconMessage = document.createElement("img");
+    iconMessage.classList.add("m-2");
+    iconMessage.src = "../assets/images/comment-icon.png";
+    iconMessage.width = "15";
+    iconMessage.height = "15";
 
-//     let countComments = document.createElement("p");
-//     countComments.innerText = `52 comments`;
+    let countComments = document.createElement("p");
+    countComments.innerText = `${comments} comments`;
 
-//     let countMinReadWrapper = document.createElement("div");
-//     countMinReadWrapper.classList.add("d-flex", "flex-row");
+    let countMinReadWrapper = document.createElement("div");
+    countMinReadWrapper.classList.add("d-flex", "flex-row");
 
-//     let textMinRead = document.createElement("p");
-//     textMinRead.innerText = "10 min read";
+    let textMinRead = document.createElement("p");
+    textMinRead.innerText = "10 min read";
 
-//     let testTagsArray = ["test1", "test2"];
+    let testTagsArray = ["test1", "test2"];
 
-//     countMinReadWrapper.append(textMinRead);
-//     reactionsWrapper.append(createIconReactions("❤️"), createIconReactions("🦄"), createIconReactions("🤯"), countReactions, iconMessage, countComments);
-//     bottomWrapper.append(reactionsWrapper, countMinReadWrapper);
-//     profilenameWrapper.append(textProfileName, spanDate);
-//     profileWrapper.append(profileImage, profilenameWrapper);
-//     cardBody.append(profileWrapper, titlePost, createTagsElements(testTagsArray), bottomWrapper);
-//     cardWrapper.append(imageCard, cardBody);
+    countMinReadWrapper.append(textMinRead);
+    reactionsWrapper.append(createIconReactions("❤️"), createIconReactions("🦄"), createIconReactions("🤯"), countReactions, iconMessage, countComments);
+    bottomWrapper.append(reactionsWrapper, countMinReadWrapper);
+    profilenameWrapper.append(textProfileName, spanDate);
+    profileWrapper.append(profileImage, profilenameWrapper);
+    cardBody.append(profileWrapper, titlePost, createTagsElements(testTagsArray), bottomWrapper);
+    index == 0 ? cardWrapper.append(imageCard, cardBody): cardWrapper.append(cardBody);
 
-//     return cardWrapper;
-// }
+    return cardWrapper;
+}
 
 const createHeader = () => {
 
@@ -415,4 +420,4 @@ perfilWrapper.classList.add("btn-group");
   return nav;
 };
 
-export { createHeader }
+export { createHeader, createPostCard }
