@@ -89,9 +89,8 @@ const createTagsElements = (tagsArray) => {
 }
 
 const createPostCard = (postObject, index) => {
-    console.log(postObject.key);
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let {author, comments, createdDate, description, image, tittle, tags, key} = postObject;
+    let {author, comments, createdDate, description, image, title, tags, key} = postObject;
     let date = new Date(createdDate);
     let formatDate = `${date.getDate()} ${monthNames[date.getMonth()]}`;
     let cardWrapper = document.createElement("div");
@@ -125,7 +124,7 @@ const createPostCard = (postObject, index) => {
 
     let titlePost = document.createElement("h5");
     titlePost.classList.add("card-title", "mt-2", "link__text");
-    titlePost.innerText = description;
+    titlePost.innerText = title;
     titlePost.addEventListener("click", () => {
         window.open(`../views/post.html?postId=${key}`, "_self")
     });
