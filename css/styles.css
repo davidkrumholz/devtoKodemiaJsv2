@@ -52,6 +52,10 @@ main .hashtags__hover:hover {
   border: 1px solid grey;
 }
 
+main .topmenu__texts--hover {
+  text-decoration: none;
+  color: rgb(64, 64, 64);
+}
 main .topmenu__texts--hover:hover {
   background-color: #fff;
   color: rgb(47, 58, 178);
