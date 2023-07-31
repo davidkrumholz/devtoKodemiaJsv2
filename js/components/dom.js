@@ -89,7 +89,6 @@ const createTagsElements = (tagsArray) => {
 }
 
 const createPostCard = (postObject, index) => {
-    console.log(postObject.key);
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let {author, comments, createdDate, description, image, tittle, tags, key} = postObject;
     let date = new Date(createdDate);
