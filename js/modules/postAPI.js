@@ -14,4 +14,4 @@ const getDetailPost = async (postId) => {
   return data;
 };
 
-export { getAllPosts, getDetailPost, getCommentsData };
+export { getAllPosts, getDetailPost };
