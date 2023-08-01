@@ -1,5 +1,7 @@
 // createpost js
 const URL = "https://equipo3js-f94ab-default-rtdb.firebaseio.com/posts/.json";
+let user = localStorage.getItem("user");
+let userName = user.split("@");
 const publishBtn = document.querySelector("#save_btn");
 console.log(publishBtn);
 publishBtn.addEventListener("click", async (event) => {
@@ -15,7 +17,7 @@ publishBtn.addEventListener("click", async (event) => {
   //const postTimeToRead = Math.ceil(quill.getText().length / 1500);
 
   // Additional post data
-  const postAuthor = "Daniel Gloria"; // Replace with the actual author's name or ID
+  const postAuthor = userName[0]; // Replace with the actual author's name or ID
   let postComments = []; // Initialize comments as an empty array
   //const createdDate = new Date().toISOString(); // Get the current date as the createdDate
   let postDescription = postBody; // Replace with the actual post description

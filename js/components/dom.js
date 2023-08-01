@@ -1,6 +1,8 @@
 //components Dom
 
 let islogedIn = localStorage.getItem("token");
+let user = localStorage.getItem("user");
+let userName = user.split("@");
 
 const createProfileDivider = () => {
     let listProfileNavDivider = document.createElement("li");
@@ -115,8 +117,7 @@ const createPostCard = (postObject, index) => {
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let {author, comments, createdDate, description, image, title, tags, key} = postObject;
     let tagsArray = tags.split(",");
-    // console.log("tagsarray");
-    // console.log(tagsArray);
+
     let date = new Date(createdDate);
     let formatDate = `${date.getDate()} ${monthNames[date.getMonth()]}`;
     let cardWrapper = document.createElement("div");
@@ -408,10 +409,10 @@ perfilWrapper.classList.add("btn-group");
   ancorListElementName.href = "#";
 
   let spanAncorListElementName = document.createElement("span");
-  spanAncorListElementName.innerText = "davidkrumholz";
+  spanAncorListElementName.innerText = userName[0];
 
   let smallAncorListElementName = document.createElement("small");
-  smallAncorListElementName.innerText = "@davidkrumholz";
+  smallAncorListElementName.innerText = `@${userName[0]}`;
 
   let bodyOffCanvas = document.getElementById("offCanvasBody");
 
