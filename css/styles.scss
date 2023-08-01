@@ -60,6 +60,8 @@ main .hashtags__hover {
 }
 
 main .topmenu__texts--hover{
+  text-decoration: none;
+  color: $link-color;
   &:hover {
     background-color: #fff;
     color: $link-color-hover-purple;
