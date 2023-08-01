@@ -2,7 +2,7 @@
 
 let islogedIn = localStorage.getItem("token");
 let user = localStorage.getItem("user");
-let userName = user.split("@");
+let userName = user ? user.split("@"): "";
 
 const createProfileDivider = () => {
     let listProfileNavDivider = document.createElement("li");
@@ -79,6 +79,7 @@ const createListItemProfileMenu = (text) => {
     if(text == "Sign out") {
         ancorListElement.addEventListener("click", () => {
             localStorage.removeItem("token");
+            localStorage.removeItem("user");
             window.open("../index.html", "_self");
         });
     }
