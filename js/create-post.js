@@ -1,7 +1,7 @@
 // createpost js
 const URL = "https://equipo3js-f94ab-default-rtdb.firebaseio.com/posts/.json";
 let user = localStorage.getItem("user");
-let userName = user.split("@");
+let userName = user ? user.split("@") : "";
 const publishBtn = document.querySelector("#save_btn");
 console.log(publishBtn);
 publishBtn.addEventListener("click", async (event) => {
