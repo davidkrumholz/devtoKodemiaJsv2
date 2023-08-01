@@ -11,6 +11,23 @@ const createProfileDivider = () => {
     return listProfileNavDivider;
 }
 
+const createAsideCard = (postsArray) => {
+  let {title, comments, key} = postsArray;
+  let ancorPost = document.createElement("a");
+  ancorPost.classList.add("list-group-item");
+  ancorPost.addEventListener("click", () => {
+    window.open(`../views/post.html?postId=${key}`, "_self")
+  });
+  let titleDiv = document.createElement("div");
+  titleDiv.innerText = title;
+
+  let commentsDiv = document.createElement("div");
+  commentsDiv.innerText = `${comments} comments`;
+
+  ancorPost.append(titleDiv, commentsDiv);
+  return ancorPost;
+}
+
 const createCardOffCanvasIsNotLogin = () => {
     let card = document.createElement("div");
     card.classList.add("card", "border-light");
@@ -81,7 +98,7 @@ const createTagsElements = (tagsArray) => {
     tagsArray.forEach((tag) => {
         let tagsElement = document.createElement("span");
         tagsElement.classList.add("hashtags__hover", "p-2", "rounded");
-        tagsElement.innerText = tag;
+        tagsElement.innerText = `#${tag}`;
         tagsWrapper.append(tagsElement);
     });
 
@@ -91,6 +108,9 @@ const createTagsElements = (tagsArray) => {
 const createPostCard = (postObject, index) => {
     let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let {author, comments, createdDate, description, image, title, tags, key} = postObject;
+    let tagsArray = tags.split(",");
+    // console.log("tagsarray");
+    // console.log(tagsArray);
     let date = new Date(createdDate);
     let formatDate = `${date.getDate()} ${monthNames[date.getMonth()]}`;
     let cardWrapper = document.createElement("div");
@@ -153,14 +173,12 @@ const createPostCard = (postObject, index) => {
     let textMinRead = document.createElement("p");
     textMinRead.innerText = "10 min read";
 
-    let testTagsArray = ["test1", "test2"];
-
     countMinReadWrapper.append(textMinRead);
     reactionsWrapper.append(createIconReactions("❤️"), createIconReactions("🦄"), createIconReactions("🤯"), countReactions, iconMessage, countComments);
     bottomWrapper.append(reactionsWrapper, countMinReadWrapper);
     profilenameWrapper.append(textProfileName, spanDate);
     profileWrapper.append(profileImage, profilenameWrapper);
-    cardBody.append(profileWrapper, titlePost, createTagsElements(testTagsArray), bottomWrapper);
+    cardBody.append(profileWrapper, titlePost, createTagsElements(tagsArray), bottomWrapper);
     index == 0 ? cardWrapper.append(imageCard, cardBody): cardWrapper.append(cardBody);
 
     return cardWrapper;
@@ -419,4 +437,4 @@ perfilWrapper.classList.add("btn-group");
   return nav;
 };
 
-export { createHeader, createPostCard }
+export { createHeader, createPostCard, createAsideCard }

@@ -1,4 +1,4 @@
-import { createHeader, createPostCard } from "./components/dom.js";
+import { createAsideCard, createHeader, createPostCard } from "./components/dom.js";
 import { getAllPosts } from "./modules/postAPI.js";
 
 let header = document.getElementById("header");
@@ -15,6 +15,8 @@ const getPosts = async () => {
   postsArray = result;
   printAllCards(postsArray);
   getPostRandom(postsArray);
+  printCssCard(postsArray);
+  printJsCard(postsArray);
 };
 
 getPosts();
@@ -27,6 +29,26 @@ const printAllCards = (postsList) => {
     postsWrapper.append(postCard);
   });
 };
+
+const printCssCard = (postsList) => {
+    let datafilter = filterPerTag(postsList, "css");
+    let sliceArray = datafilter.slice(0,3);
+    let postWrapper = document.getElementById("tagCSS-wrapper");
+    sliceArray.forEach((post) => {
+        let postCard = createAsideCard(post);
+        postWrapper.append(postCard);
+    });
+}
+
+const printJsCard = (postsList) => {
+    let datafilter = filterPerTag(postsList, "js");
+    let sliceArray = datafilter.slice(0,3);
+    let postWrapper = document.getElementById("tagJS-wrapper");
+    sliceArray.forEach((post) => {
+        let postCard = createAsideCard(post);
+        postWrapper.append(postCard);
+    });
+}
 
 
 document.getElementById("searchInput").addEventListener("keyup", (event) => {
@@ -58,7 +80,9 @@ const printAsideCard = (postObject) => {
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++Filter+++++++++++++++++++ */
 
-
+const filterPerTag = (postsArray, tag) => {
+    return postsArray.filter((postsArray) => postsArray.tags.toLowerCase().includes(tag.toLowerCase()));
+}
 
  const getRatingArrangedPost = (postsArray) =>{
     postsArray.sort(function (a, b) {  
