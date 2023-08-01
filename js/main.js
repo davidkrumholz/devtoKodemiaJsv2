@@ -14,6 +14,7 @@ const getPosts = async () => {
     }, []);
     postsArray = result;
     printAllCards(postsArray);
+    getPostRandom(postsArray);
 }
 
 getPosts();
@@ -27,6 +28,7 @@ const printAllCards = (postsList) => {
    });
 }
 
+
 document.getElementById("searchInput").addEventListener("keyup", (event) => {
     let value = event.target.value;
     let result = postsArray.filter( post => {
@@ -35,3 +37,23 @@ document.getElementById("searchInput").addEventListener("keyup", (event) => {
     console.log(result);
     printAllCards(result);
 });
+
+const getPostRandom= (postArray) => {
+    let countArray = postArray.length;
+    let randomNumber = Math.floor(Math.random() * countArray);
+    printAsideCard(postArray[randomNumber]);
+}
+
+const printAsideCard = (postObject) => {
+    let {key, image, title} = postObject
+    let imgAside = document.getElementById("imgAside");
+    let titleRightAside = document.getElementById("cardAsideTitle");
+    let keyPostButton = document.getElementById("keyRightAside")
+    imgAside.src = image;
+    titleRightAside.innerText = title;
+    keyPostButton.addEventListener("click", (event) => {
+        window.open(`./views/post.html?postId=${key}`, "_self")
+    })
+
+}
+

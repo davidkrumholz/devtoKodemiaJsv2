@@ -1,0 +1,90 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.title-primary {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.subtitle-primary {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(64, 64, 64);
+}
+
+.buttons-wrapper {
+  padding: 0.05rem;
+}
+.buttons-wrapper button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 9px;
+}
+
+.btn-Apple {
+  background-color: #000;
+}
+
+.btn-Forem {
+  background-color: #0a3e4a;
+}
+
+.btn-GitHub {
+  background-color: #24292e;
+}
+
+.btn-Twitter {
+  background-color: #1da1f2;
+}
+
+.btn-login-form {
+  background: #3b49df;
+  transition: ease-in-out;
+}
+
+.btn-login-form:hover {
+  background-color: #2f3ab2;
+}
+
+.a-password-link {
+  color: #3b49df;
+  font-size: 14px;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+.container-email:hover .input-email {
+  border: 1px solid gray;
+}
+
+.input-email {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-email:focus {
+  border: 2px solid #2f3ab2 !important;
+}
+
+.container-password:hover .input-password {
+  border: 1px solid gray;
+}
+
+.input-password {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-password:focus {
+  border: 2px solid #2f3ab2 !important;
+}/*# sourceMappingURL=login.css.map */
