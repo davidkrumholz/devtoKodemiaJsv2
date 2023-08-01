@@ -20,18 +20,29 @@ const getPosts = async () => {
 getPosts();
 
 const printAllCards = (postsList) => {
-  let postsWrapper = document.getElementById("wrapperPosts");
-  postsList.forEach((post, index) => {
+   let postsWrapper = document.getElementById("wrapperPosts");
+   postsWrapper.innerHTML = "";
+   postsList.forEach((post, index) => {
     let postCard = createPostCard(post, index);
     postsWrapper.append(postCard);
   });
 };
 
-const getPostRandom = (postArray) => {
-  let countArray = postArray.length;
-  let randomNumber = Math.floor(Math.random() * countArray);
-  printAsideCard(postArray[randomNumber]);
-};
+
+document.getElementById("searchInput").addEventListener("keyup", (event) => {
+    let value = event.target.value;
+    let result = postsArray.filter( post => {
+        return post["title"].toLowerCase().includes(value.toLowerCase());
+    });
+    console.log(result);
+    printAllCards(result);
+});
+
+const getPostRandom= (postArray) => {
+    let countArray = postArray.length;
+    let randomNumber = Math.floor(Math.random() * countArray);
+    printAsideCard(postArray[randomNumber]);
+}
 
 const printAsideCard = (postObject) => {
   let { key, image, title } = postObject;
@@ -59,7 +70,6 @@ const printAsideCard = (postObject) => {
 const filterRelevant = (postsArray) => {
   return postsArray.filter((postsArray) => postsArray.relevant); 
 }
-
 /*Filter Case */
 
 let filterType = "";
@@ -88,4 +98,3 @@ element.addEventListener("click", (event) => {
   }
 });
 });
-
