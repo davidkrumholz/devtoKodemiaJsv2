@@ -81,6 +81,12 @@ const createListItemProfileMenu = (text) => {
         });
     }
 
+    if(text == "Create post") {
+      ancorListElement.addEventListener("click", () => {
+        window.open("../views/create-post.html", "_self");
+      })
+    }
+
     listElement.append(ancorListElement);
     return listElement;
 }
@@ -342,7 +348,7 @@ const createHeader = () => {
   );
 
   let loginButton = document.createElement("button");
-  loginButton.classList.add("btn", "btn-light", "d-none", "d-sm-none", "d-md-block");
+  loginButton.classList.add("btn", "btn-light", "d-none", "d-sm-none", "d-md-block", "mx-3");
   loginButton.innerText = "Log in";
 
   loginButton.addEventListener("click", () => {
@@ -359,7 +365,10 @@ const createHeader = () => {
 
   let createPost = document.createElement("button");
   createPost.classList.add("btn", "button__primary--purple", "d-none", "d-sm-none", "d-md-block")
-  createPost.innerText = "Create post"
+  createPost.innerText = "Create post";
+  createPost.addEventListener("click", () => {
+    window.open("../views/create-post.html", "_self")
+  });
 
   let bellButton = document.createElement("button");
   bellButton.classList.add("btn", "navbar__buttton--transparent", "button__primary--transparent-purple", "ms-2");
@@ -406,8 +415,9 @@ perfilWrapper.classList.add("btn-group");
 
   let bodyOffCanvas = document.getElementById("offCanvasBody");
 
-  !islogedIn && bodyOffCanvas.append(createCardOffCanvasIsNotLogin());
-
+  if(!islogedIn) {
+    bodyOffCanvas.append(createCardOffCanvasIsNotLogin());
+  }
 
   // Appends
   svgBellButton.append(titleSvgBellButton, pathSvgBellButton);
