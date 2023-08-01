@@ -21,11 +21,22 @@ getPosts();
 
 const printAllCards = (postsList) => {
    let postsWrapper = document.getElementById("wrapperPosts");
+   postsWrapper.innerHTML = "";
    postsList.forEach((post, index) => {
     let postCard = createPostCard(post, index);
     postsWrapper.append(postCard);
    });
 }
+
+
+document.getElementById("searchInput").addEventListener("keyup", (event) => {
+    let value = event.target.value;
+    let result = postsArray.filter( post => {
+        return post["title"].toLowerCase().includes(value.toLowerCase());
+    });
+    console.log(result);
+    printAllCards(result);
+});
 
 const getPostRandom= (postArray) => {
     let countArray = postArray.length;
@@ -45,3 +56,4 @@ const printAsideCard = (postObject) => {
     })
 
 }
+
