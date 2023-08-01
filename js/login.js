@@ -1,4 +1,9 @@
 //login JS
+import { createHeader } from "../js/components/dom.js";
+
+let header = document.getElementById("header");
+header.append(createHeader());
+
 let user = {};
 
 let loginFields = document.querySelectorAll("#loginForm input");

@@ -1,5 +1,9 @@
 //post JS
 import { getDetailPost } from "./modules/postAPI.js";
+import { createHeader } from "./components/dom.js"
+
+let header = document.getElementById("header");
+header.append(createHeader());
 
 const urlParams = new URLSearchParams(location.search);
 
